@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notizblock</title>
+
+    <script src="./script.js"></script>
+    <script src=""></script>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete_sweep" />
+</head>
+
+<body onload="renderNotes()">
+    <h1>Notizblock</h1>
+    <input class="note_input" id="noteInput" type="text">
+    <button class="note_input" onclick="addNote()">Notiz speichern</button>
+
+    <h2>Notes</h2>
+    <div class="content" id="content">
+
+    </div>
+    <h2>Trash</h2>
+    <div id="trashContent" class="trash_content">
+
+    </div>
+
+</body>
+
+</html>
