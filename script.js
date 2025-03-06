@@ -1,6 +1,27 @@
 let notes = [];
 let trashNotes = [];
 
+let allNotes = {
+'notes': ['Test', 'Bruh'],
+'trashNotes': ['TrashTest', 'Bruh']
+}
+
+function moveNote(indexNote, start, destination) {
+    let trashContentRef = document.getElementById('trashContent'); //Definiert contentRef als id element content
+    trashContentRef.innerHTML = ""; //Leert contentRef
+
+    for (let indexTrashNote = 0; indexTrashNote < allNotes.trashNotes.length; indexTrashNote++) { //Definiert indexNote als 0, indexNote kleiner als notes.length, indexNote +1
+        trashContentRef.innerHTML += getTrashNoteTemplate(indexTrashNote); //Fügt note in contentRef hinzu
+    }
+
+
+    saveData();
+    renderNotes();
+    renderTrashNotes();
+    
+}
+
+
 function renderNotes() {
     getLocalStorage();
     let contentRef = document.getElementById('content');
@@ -29,18 +50,18 @@ function renderTrashNotes() {
     let trashContentRef = document.getElementById('trashContent'); //Definiert contentRef als id element content
     trashContentRef.innerHTML = ""; //Leert contentRef
 
-    for (let indexTrashNote = 0; indexTrashNote < trashNotes.length; indexTrashNote++) { //Definiert indexNote als 0, indexNote kleiner als notes.length, indexNote +1
+    for (let indexTrashNote = 0; indexTrashNote < allNotes.trashNotes.length; indexTrashNote++) { //Definiert indexNote als 0, indexNote kleiner als notes.length, indexNote +1
         trashContentRef.innerHTML += getTrashNoteTemplate(indexTrashNote); //Fügt note in contentRef hinzu
     }
 }
 
 function getNoteTemplate(indexNote) { //Definiert getNoteTemplate als note
     return ` <p><button class="button" onclick="pushToTrash(${indexNote})"><span class="material-symbols-outlined">
-delete_sweep</span></button>${notes[indexNote]}</p>`;     //Gibt note als p zurück 
+delete_sweep</span></button>${allNotes.notes[indexNote]}</p>`;     //Gibt note als p zurück 
 }
 
 function getTrashNoteTemplate(indexTrashNote) { //Definiert getNoteTemplate als note
-    return ` <p><button class="button" onclick="deleteNote(${indexTrashNote})">X</button>${trashNotes[indexTrashNote]}</p>`;     //Gibt note als p zurück 
+    return ` <p><button class="button" onclick="deleteNote(${indexTrashNote})">X</button>${allNotes.trashNotes[indexTrashNote]}</p>`;     //Gibt note als p zurück 
 }
 
 function pushToTrash(indexNote) {
